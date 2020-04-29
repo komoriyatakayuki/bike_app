@@ -1,0 +1,9 @@
+<h1>バイク一覧表</h1>
+<% @bikes.each do |bike| %>
+ <tr>
+  <th>タイプ名: <%= bike.category %></th>
+  <th>バイク名: <%= bike.name %></th>
+  <img src= <%= bike.image_url %>>
+  <th>価格: <%= bike.price %></th>
+ </tr>
+<% end %>
