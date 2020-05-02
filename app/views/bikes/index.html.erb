@@ -3,12 +3,14 @@
 <div class="container">
 <div class="row">
   <% @bikes.each do |bike| %>
-  <div class="col-4 mb-5">
-  <div class="card" style="width: 18rem;">
+  <div class="col-6 mb-5">
+  <div class="card" style="width: 32rem;">
     <img src="<%= bike.image_url %>" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title"><%= bike.category %></h5>
-      <p class="card-text"><%= bike.name %></p>
+      <h5 class="card-title">タイプ:<%= bike.category %></h5>
+      <p class="card-text">バイク名:<%= bike.name %></p>
+      <p class="card-text">価格:<%= bike.price %></p>
+      <p class="card-text">詳細:<%= bike.description %></p>
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
   </div>
