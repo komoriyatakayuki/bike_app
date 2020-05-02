@@ -1,9 +1,18 @@
 <h1>バイク一覧表</h1>
-<% @bikes.each do |bike| %>
- <tr>
-  <th>タイプ名: <%= bike.category %></th>
-  <th>バイク名: <%= bike.name %></th>
-  <img src= <%= bike.image_url %>>
-  <th>価格: <%= bike.price %></th>
- </tr>
-<% end %>
+
+<div class="container">
+<div class="row">
+  <% @bikes.each do |bike| %>
+  <div class="col-4 mb-5">
+  <div class="card" style="width: 18rem;">
+    <img src="<%= bike.image_url %>" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><%= bike.category %></h5>
+      <p class="card-text"><%= bike.name %></p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  </div>
+  <% end %>
+</div>
+</div>
