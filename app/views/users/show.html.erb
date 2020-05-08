@@ -1,0 +1,4 @@
+<h1><%= @user.name %>, <%= @user.email %></h1>
+<%= link_to '編集する', edit_user_path(@user) %>
+<%= link_to '削除する', @user, method: :delete, data:{ confirm: '本当によろしいですか？'} %>
+<%= link_to '一覧表へ', users_path %>
