@@ -1,4 +1,5 @@
 class BikesController < ApplicationController
+  before_action :authenticate_customer!
   def index
     @bikes= Bike.all
         # 検索オブジェクト
@@ -10,6 +11,5 @@ class BikesController < ApplicationController
   def show
     @bike = Bike.find(params[:id])
   end
-  
   
 end
