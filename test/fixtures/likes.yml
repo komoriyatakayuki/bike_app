@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bike: one
+  customer: one
+
+two:
+  bike: two
+  customer: two

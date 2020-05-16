@@ -6,10 +6,13 @@ class BikesController < ApplicationController
     @search = Bike.ransack(params[:q])
     # 検索結果
     @bikes = @search.result
+    
   end
   
   def show
     @bike = Bike.find(params[:id])
+    @like = Like.new
+    @review = current_customer.reviews.build
   end
   
 end

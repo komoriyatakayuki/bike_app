@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200509001745) do
+ActiveRecord::Schema.define(version: 20200516022346) do
 
   create_table "bikes", force: :cascade do |t|
     t.string "name"
@@ -34,11 +34,26 @@ ActiveRecord::Schema.define(version: 20200509001745) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
+  create_table "likes", force: :cascade do |t|
+    t.integer "bike_id"
+    t.integer "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["bike_id"], name: "index_likes_on_bike_id"
+    t.index ["customer_id"], name: "index_likes_on_customer_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "size"
+    t.integer "height"
+    t.integer "weight"
+    t.text "content"
+    t.integer "bike_id"
+    t.integer "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bike_id"], name: "index_reviews_on_bike_id"
+    t.index ["customer_id"], name: "index_reviews_on_customer_id"
   end
 
 end

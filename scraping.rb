@@ -3,8 +3,9 @@ require 'nokogiri'
 require 'open-uri'
 def fetch_bike(url)
   doc = Nokogiri::HTML(open(url))
-  bike = {}
+  bikes = []
   doc.css('.bike-box > a > .bike-item').each do |node|
+    bike = {}
     category = node.css('.header > p').text
     bike[:category] = category
     image_url =  "https://www.giant.co.jp#{node.css('.image > img').attribute('src')}"
@@ -15,8 +16,9 @@ def fetch_bike(url)
     bike[:price] = price
     description = node.css('.text > ul')[0].text
     bike[:description] = description
+  bikes << bike
   end
-  bike
+  bikes
 end
 urls = [
   'https://www.giant.co.jp/giant20/bike_select.php?c_code=CA02&f_code=FD01&s_code=SR13',

@@ -19,6 +19,8 @@
     <div class="card-body">
       <h5 class="card-title">タイプ:<%= bike.category %></h5>
       <p class="card-text">バイク名:<%= bike.name %></p>
+      <p >お気に入り数(<%= bike.liked_customers.count %>)</p>
+      <p >レビュー数(<%= bike.reviewed_customers.count %>)</p>
       <p class="card-text">価格:<%= bike.price %></p>
       <p class="card-text">詳細:<%= bike.description %></p>
       <a href="#" class="btn-gradient-3d">Go Somewhere</a>

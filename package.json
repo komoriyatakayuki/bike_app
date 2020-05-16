@@ -1,5 +1,7 @@
 {
   "name": "bike_app",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "raty-js": "^2.9.0"
+  }
 }
