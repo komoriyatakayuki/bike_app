@@ -1,0 +1,109 @@
+<div class="box11">
+  <h1>
+    <%= @bike.category %>
+  </h1>
+  <h1>
+    <%= @bike.name %>
+   </h1>
+  <div class="img">
+    <img src="<%= @bike.image_url %>" alt="...">
+  </div>
+    <p class="price">値段：<%= @bike.price%></p>
+    <p class="description">詳細：<%= @bike.description %></p>
+  <div class="good">
+    <h5>いいね件数: <%= @bike.likes.count %></h5>
+      <% if current_customer.already_liked?(@bike) %>
+        <%= button_to 'いいねを取り消す', bike_like_path(@bike), method: :delete %>
+      <% else %>
+        <%= button_to 'いいね', bike_likes_path(@bike), {class: "btn btn-gradient-3d"} %>
+      <% end %>
+    <h5>いいねしたユーザー</h5>
+      <% @bike.liked_customers.each do |customer| %>
+      <li><%= customer.email %></li>
+      <% end %>
+  </div>
+    <h5>レビュー件数: <%= @bike.reviews.count %></h5>
+</div>
+
+<div class="box11">
+  <% if current_customer.already_reviewed?(@bike) %>
+    <%= button_to 'レビューを取り消す', bike_review_path(@bike), method: :delete %>
+  <% else %>
+  
+  <div class="new-review">
+    <h4>新規レビューページ</h4>
+    <%= form_for [@bike, @review] do |t| %>
+      <table>
+    <tr>
+      <td><%= t.label :選んだサイズ %></td>
+      <td><%= t.text_field :size %></td>
+    </tr>
+    <tr>
+      <td><%= t.label :身長 %></td>
+      <td> <%= t.number_field :height %></td>
+    </tr>
+    <tr>
+      <td><%= t.label :体重 %></td>
+      <td><%= t.number_field :weight %></td>
+    </tr>
+    <tr>
+      <td><%= t.label :投稿内容 %></td>
+      <td><%= t.text_area :content %></td>
+    </tr>
+    <tr>
+      <td><%= t.label :評価 %></td>
+      <td><%= t.hidden_field :rate %></td>
+    </tr>
+    </table>
+    <%= t.submit :投稿, {class: "btn btn-gradient-3d"} %>
+    <% end %>
+  </div>
+  <% end %>
+</div>
+<%= link_to '投稿されたレビューを見る', bike_reviews_path(@bike), {class: "btn btn-gradient-3d"} %>
+
+<div class="raty"></div>
+<h5>レビューしたユーザー</h5>
+<% @bike.reviewed_customers.each do |customer| %>
+  <li><%= customer.email %></li>
+<% end %>
+
+<h5>投稿レビュー</h5>
+<% @bike.reviews.each do |review| %>
+<div class="box11">
+ <table>
+    <tr>
+      <td><%= t.label :選んだサイズ %></td>
+      <td><%= review.size %></td>
+    </tr>
+    <tr>
+      <td><%= t.label :身長 %></td>
+      <td> <%= review.height %></td>
+    </tr>
+    <tr>
+      <td><%= t.label :体重 %></td>
+      <td><%= review.weight %></td>
+    </tr>
+    <tr>
+      <td><%= t.label :投稿内容 %></td>
+      <td><%= review.content %></td>
+    </tr>
+    <tr>
+      <td><%= t.label :評価 %></td>
+      <td><%= review.rate %></td>
+    </tr>
+  </table>
+</div>
+<% end %>
+
+
+<%= link_to "一覧へ戻る", bikes_path, {class: "btn btn-gradient-3d"} %>
+
+
+<script>
+  $(function() {
+  $('.raty').raty({score: 4, starType: 'i'})
+  })
+</script>
+
+

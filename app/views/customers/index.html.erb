@@ -1,0 +1,7 @@
+
+
+<h3>いいねしている投稿</h3>
+<% @customers.liked_bikes.each do |bike| %>
+  <%= bike.name %>
+  <img src="<%= bike.image_url %>"  alt="...">
+<% end %>

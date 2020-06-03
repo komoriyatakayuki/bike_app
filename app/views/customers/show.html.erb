@@ -1,0 +1,12 @@
+<h3>いいねしているバイク</h3>
+<% @customer.liked_bikes.each do |bike| %>
+  <%= bike.name %>
+  <img src="<%= bike.image_url %>"  alt="...">
+<% end %>
+
+<h3>レビューしているバイク</h3>
+<% @customer.reviewed_bikes.each do |bike| %>
+  <%= bike.name %>
+<% end %>
+
+<%= link_to "ホームへ戻る", bikes_path %>

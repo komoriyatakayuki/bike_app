@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  size: MyString
+  height: 1
+  weight: 1
+  content: MyText
+  bike: one
+  customer: one
+
+two:
+  size: MyString
+  height: 1
+  weight: 1
+  content: MyText
+  bike: two
+  customer: two

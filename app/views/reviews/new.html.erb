@@ -1,0 +1,8 @@
+<h1>新規レビューページ</h1>
+<%= form_for @review do |t| %>
+<%= t.text_field :size %>
+<%= t.number_field :height %>
+<%= t.number_field :weight %>
+<%= t.text_area :content %>
+<%= t.submit %>
+<% end %>

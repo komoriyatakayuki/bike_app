@@ -1,0 +1,32 @@
+<h1>バイク一覧表</h1>
+
+<div class="container">
+<!--`form_for`のRansack版 --!>
+<%= search_form_for @search do |f| %>
+<!-- nameカラムに対して部分一致検索ができる --!>
+  <%= f.label :name_cont, "商品名を含む" %>
+  <%= f.search_field :name_cont %>
+
+<!-- 検索ボタン --!>
+  <div class="actions"><%= f.submit "検索", {class: "btn btn-gradient-3d"} %></div>
+<% end %>
+<div class="row">
+  <% @bikes.each do |bike| %>
+  <div class="col-6 mb-5">
+  <div class="card" style="width: 32rem;">
+    <img src="<%= bike.image_url %>" class="card-img-top" alt="...">
+    <%= link_to "詳しく", bike_path(bike) %>
+    <div class="card-body">
+      <h5 class="card-title">タイプ:<%= bike.category %></h5>
+      <p class="card-text">バイク名:<%= bike.name %></p>
+      <p >お気に入り数(<%= bike.liked_customers.count %>)</p>
+      <p >レビュー数(<%= bike.reviewed_customers.count %>)</p>
+      <p class="card-text">価格:<%= bike.price %></p>
+      <p class="card-text">詳細:<%= bike.description %></p>
+      <a href="#" class="btn-gradient-3d">Go Somewhere</a>
+    </div>
+  </div>
+  </div>
+  <% end %>
+</div>
+</div>
